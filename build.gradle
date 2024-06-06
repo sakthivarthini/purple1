@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-
+id 'org.cyclonedx.bom' version '1.8.1'
 group = 'com.github.jitpack'
 version = '2.0'
 
@@ -9,6 +9,18 @@ targetCompatibility = 1.8
 
 repositories {
   mavenCentral()
+}
+
+cyclonedxBom {
+ includeConfigs = ["runtimeClasspath"]
+ projectType = "application"
+ schemaVersion = "1.5"
+ destination = file("build/reports")
+ outputName = "bom"
+ outputFormat = "xml"
+ includeBomSerialNumber = false
+ includeLicenseText = false
+ componentVersion = "2.0.0"
 }
 
 dependencies {
