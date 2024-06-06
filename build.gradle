@@ -11,39 +11,39 @@ sourceCompatibility = 1.8 // java 8
 targetCompatibility = 1.8
 
 repositories {
-  mavenCentral()
-}
-
-cyclonedxBom {
- includeConfigs = ["runtimeClasspath"]
- projectType = "application"
- schemaVersion = "1.5"
- destination = file("build/reports")
- outputName = "bom"
- outputFormat = "xml"
- includeBomSerialNumber = false
- includeLicenseText = false
- componentVersion = "2.0.0"
+    mavenCentral()
 }
 
 dependencies {
-  implementation 'com.google.guava:guava:29.0-jre'
+    implementation 'com.google.guava:guava:29.0-jre'
+}
+
+cyclonedxBom {
+    includeConfigs = ["runtimeClasspath"]
+    projectType = "application"
+    schemaVersion = "1.5"
+    destination = file("build/reports")
+    outputName = "bom"
+    outputFormat = "xml"
+    includeBomSerialNumber = false
+    includeLicenseText = false
+    componentVersion = "2.0.0"
 }
 
 java {
-	withSourcesJar()
-	withJavadocJar()
+    withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-		from components.java
+            from components.java
         }
     }
 }
 
 wrapper {
-    gradleVersion = "7.3.3"
+    gradleVersion = "7.6"
     distributionType = Wrapper.DistributionType.ALL
 }
