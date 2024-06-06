@@ -18,6 +18,10 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
 }
 
+clean { // Define the clean task
+    delete rootProject.buildDir
+}
+
 cyclonedxBom {
     includeConfigs = ["runtimeClasspath"]
     projectType = "application"
